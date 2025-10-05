@@ -1,21 +1,8 @@
 {
 	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "biomejs.biome",
-	"[javascript]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[javascriptreact]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[typescriptreact]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
+	// biomejs.biome の defaultFormatter 設定は削除
 	"editor.codeActionsOnSave": {
-		"source.fixAll": "explicit",
-		"quickfix.biome": "always",
+		"source.fixAll.biome": "explicit",
 		"source.organizeImports.biome": "always"
 	},
 	"frontMatter.dashboard.openOnStart": false
