@@ -1,6 +1,6 @@
 ---
 import PostCard from "@/components/PostCard.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "@/config";
+import { siteConfig } from "@/config";
 import Layout from "@/layouts/Layout.astro";
 import { getSortedPosts } from "@/utils/content-utils";
 
@@ -8,14 +8,14 @@ const posts = await getSortedPosts();
 const latestPosts = posts.slice(0, 6);
 ---
 
-<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Layout title={siteConfig.title} description={siteConfig.subtitle}>
 	<section>
 		<h1 class="mb-8 text-4xl font-bold">Recent Posts</h1>
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 			{
 				latestPosts.map((post) => (
 					<div class="col-span-1">
-						<PostCard {post} />
+						<PostCard entry={post} />
 					</div>
 				))
 			}
