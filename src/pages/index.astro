@@ -1,8 +1,8 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import { getPosts }s from "@/utils/content-utils";
 import PostCard from "@/components/PostCard.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/config";
+import Layout from "@/layouts/Layout.astro";
+import { getPosts } from "@/utils/content-utils";
 
 const posts = await getPosts();
 const latestPosts = posts.slice(0, 6);
