@@ -15,7 +15,19 @@ const latestPosts = posts.slice(0, 6);
 			{
 				latestPosts.map((post) => (
 					<div class="col-span-1">
-						<PostCard entry={post} />
+						<PostCard
+							entry={post}
+							url={`/posts/${post.slug}/`}
+							title={post.data.title}
+							published={post.data.published}
+							updated={post.data.updated}
+							tags={post.data.tags}
+							category={post.data.category}
+							image={post.data.image}
+							description={post.data.description}
+							draft={post.data.draft}
+							style=""
+						/>
 					</div>
 				))
 			}
