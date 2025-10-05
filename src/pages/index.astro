@@ -2,9 +2,9 @@
 import PostCard from "@/components/PostCard.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
-import { getPosts } from "@/utils/content-utils";
+import { getSortedPosts } from "@/utils/content-utils";
 
-const posts = await getPosts();
+const posts = await getSortedPosts();
 const latestPosts = posts.slice(0, 6);
 ---
 
