@@ -15,7 +15,7 @@ export type Translation = {
 	[K in I18nKey]: string;
 };
 
-const defaultTranslation = en;
+export const defaultLocale = "ja";
 
 const map: { [key: string]: Translation } = {
 	es: es,
@@ -39,7 +39,7 @@ const map: { [key: string]: Translation } = {
 };
 
 export function getTranslation(lang: string): Translation {
-	return map[lang.toLowerCase()] || defaultTranslation;
+	return map[lang.toLowerCase()] || map[defaultLocale];
 }
 
 export function i18n(key: I18nKey): string {
