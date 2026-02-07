@@ -1,7 +1,9 @@
 # About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+こんにちは！Rurimaruです！！
+[関連リンク・SNSはこちらから！](https://links.rurimaru.net).
 
-::github{repo="saicaca/fuwari"}
+::github{repo="rurimarus/rurimarus.github.io"}
+
 
 > ### Sources of images used in this site
 > - [Unsplash](https://unsplash.com/)
