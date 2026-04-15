@@ -1,0 +1,927 @@
+---
+const basePath = import.meta.env.BASE_URL ?? "/";
+const homeUrl = basePath;
+const archiveUrl = `${basePath}archive/`;
+const tagsUrl = `${basePath}tags/`;
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 | ページが見つかりません</title>
+    <meta
+      name="description"
+      content="お探しのページは見つかりませんでした。未公開の記事・下書きの記事・移動済みページの可能性があります。"
+    />
+    <meta name="robots" content="noindex" />
+
+    https://fonts.googleapis.com
+    https://fonts.gstatic.com
+    https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0&display=swap&icon_names=home,arrow_back,search,inventory_2,sell,route,arrow_outward,article,warning
+
+    <style>
+      :root {
+        --bg: #f8f9fb;
+        --surface: #ffffff;
+        --surface-soft: #fbfbfd;
+        --text: #1f1f1f;
+        --muted: #5f6368;
+        --line: rgba(31, 31, 31, 0.10);
+        --line-strong: rgba(31, 31, 31, 0.16);
+
+        --accent-blue: #5d86ff;
+        --accent-violet: #8668ff;
+        --accent-pink: #ef74b8;
+
+        --radius-card: 28px;
+        --radius-block: 22px;
+        --radius-pill: 9999px;
+
+        --shadow-soft: 0 8px 24px rgba(16, 24, 40, 0.05);
+        --shadow-hover: 0 12px 28px rgba(16, 24, 40, 0.08);
+
+        --content-width: 1040px;
+        --transition: 220ms cubic-bezier(.2, .8, .2, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Google Sans", "Noto Sans JP", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.72;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .msr {
+        font-family: "Material Symbols Rounded";
+        font-weight: normal;
+        font-style: normal;
+        font-size: 1.25rem;
+        line-height: 1;
+        display: inline-block;
+        white-space: nowrap;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 500,
+          "GRAD" 0,
+          "opsz" 24;
+        user-select: none;
+        flex: 0 0 auto;
+      }
+
+      .page {
+        width: min(calc(100% - 28px), var(--content-width));
+        margin: 0 auto;
+        padding: 24px 0 56px;
+      }
+
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-card);
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+      }
+
+      .hero {
+        display: grid;
+        gap: 0;
+      }
+
+      .hero-copy {
+        padding: 26px 20px 22px;
+        display: grid;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .title-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .title-mark {
+        width: 28px;
+        height: 48px;
+        flex: 0 0 auto;
+        margin-top: 2px;
+      }
+
+      .topline {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 500;
+      }
+
+      .topline .msr {
+        font-size: 1rem;
+        color: var(--accent-violet);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.15rem, 6vw, 4.5rem);
+        line-height: 1.03;
+        letter-spacing: -0.045em;
+        font-weight: 800;
+      }
+
+      .grad {
+        background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet), var(--accent-pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+      }
+
+      .lead {
+        margin: 0;
+        max-width: 48rem;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .lead strong {
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      .hero-side {
+        display: grid;
+        grid-template-rows: auto auto;
+      }
+
+      .route-box {
+        padding: 18px 20px;
+        background: var(--surface-soft);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .route-meta {
+        display: grid;
+        gap: 8px;
+      }
+
+      .route-label {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .route-label .msr {
+        font-size: 1rem;
+      }
+
+      .route-path {
+        margin: 0;
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: #ffffff;
+        font-size: 0.94rem;
+        color: var(--text);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .route-visual {
+        padding: 18px 20px 10px;
+        background: #ffffff;
+      }
+
+      .route-svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .route-base {
+        stroke: rgba(31, 31, 31, 0.12);
+      }
+
+      .route-active {
+        stroke: url(#routeGradient);
+        stroke-dasharray: 10 12;
+        animation: flow 14s linear infinite;
+      }
+
+      .route-dot {
+        animation: blink 2.8s ease-in-out infinite;
+        transform-origin: center;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 20px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .btn {
+        min-height: 50px;
+        padding: 0 18px;
+        border-radius: var(--radius-pill);
+        border: 1px solid transparent;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+        transition:
+          transform var(--transition),
+          box-shadow var(--transition),
+          border-color var(--transition),
+          background-color var(--transition);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .btn:focus-visible,
+      .chip:focus-visible,
+      .result-card:focus-visible,
+      .search-shell:focus-within {
+        outline: none;
+        box-shadow:
+          0 0 0 4px rgba(93, 134, 255, 0.12),
+          var(--shadow-soft);
+      }
+
+      .btn-primary {
+        color: #ffffff;
+        background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet), var(--accent-pink));
+        box-shadow: var(--shadow-soft);
+      }
+
+      .btn-secondary {
+        color: var(--text);
+        background: #ffffff;
+        border-color: var(--line-strong);
+      }
+
+      .content-grid {
+        display: grid;
+        gap: 0;
+      }
+
+      .search-panel,
+      .links-panel {
+        padding: 20px;
+      }
+
+      .search-panel {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .section-title {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      .section-title .msr {
+        color: var(--accent-violet);
+      }
+
+      .section-text {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+
+      .search-form {
+        display: grid;
+        gap: 10px;
+      }
+
+      .search-shell {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 56px;
+        padding: 0 10px 0 16px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--line-strong);
+        background: #ffffff;
+        transition:
+          box-shadow var(--transition),
+          border-color var(--transition);
+      }
+
+      .search-shell .msr {
+        color: var(--muted);
+      }
+
+      .search-input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: var(--text);
+        font-size: 1rem;
+      }
+
+      .search-input::placeholder {
+        color: #787d83;
+      }
+
+      .search-button {
+        min-height: 40px;
+        padding: 0 16px;
+        border: 0;
+        border-radius: var(--radius-pill);
+        background: linear-gradient(135deg, rgba(93, 134, 255, 0.10), rgba(239, 116, 184, 0.12));
+        color: var(--text);
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform var(--transition),
+          box-shadow var(--transition),
+          background-color var(--transition);
+      }
+
+      .search-button:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .search-status {
+        min-height: 1.4em;
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .result-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .result-card {
+        display: grid;
+        gap: 6px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface-soft);
+        transition:
+          transform var(--transition),
+          border-color var(--transition),
+          box-shadow var(--transition);
+      }
+
+      .result-card:hover {
+        transform: translateY(-1px);
+        border-color: rgba(93, 134, 255, 0.24);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .result-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .result-meta .msr {
+        font-size: 1rem;
+      }
+
+      .result-title {
+        margin: 0;
+        font-size: 0.98rem;
+        font-weight: 700;
+      }
+
+      .result-excerpt {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .result-excerpt mark {
+        background: linear-gradient(135deg, rgba(93, 134, 255, 0.20), rgba(239, 116, 184, 0.24));
+        color: inherit;
+        padding: 0 0.16em;
+        border-radius: 0.35em;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .chip {
+        min-height: 46px;
+        padding: 0 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--line);
+        background: #ffffff;
+        font-weight: 600;
+        transition:
+          transform var(--transition),
+          box-shadow var(--transition),
+          border-color var(--transition);
+      }
+
+      .chip:hover {
+        transform: translateY(-1px);
+        border-color: rgba(93, 134, 255, 0.28);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .chip-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        line-height: 1.25;
+      }
+
+      .chip-label {
+        font-size: 0.94rem;
+      }
+
+      .chip-sub {
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      .footnote {
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      @keyframes flow {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -160; }
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: .7; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.06); }
+      }
+
+      @media (min-width: 920px) {
+        .hero {
+          grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+        }
+
+        .hero-copy {
+          padding: 34px 32px 28px;
+          border-right: 1px solid var(--line);
+          border-bottom: 0;
+        }
+
+        .route-box,
+        .route-visual {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+
+        .actions {
+          padding: 20px 32px;
+        }
+
+        .content-grid {
+          grid-template-columns: 1.1fr 0.9fr;
+        }
+
+        .search-panel {
+          border-right: 1px solid var(--line);
+          border-bottom: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          width: min(calc(100% - 18px), var(--content-width));
+          padding: 14px 0 28px;
+        }
+
+        .panel {
+          border-radius: 24px;
+        }
+
+        .hero-copy,
+        .route-box,
+        .route-visual,
+        .actions,
+        .search-panel,
+        .links-panel {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .actions {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .search-shell {
+          min-height: 54px;
+        }
+
+        .search-button {
+          min-height: 38px;
+          padding: 0 14px;
+        }
+
+        .title-mark {
+          width: 24px;
+          height: 42px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="page">
+      <section class="panel" aria-labelledby="page-title">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="title-row">
+              <svg class="title-mark" viewBox="0 0 28 48" fill="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="titleGradient" x1="3" y1="3" x2="24" y2="44" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#67D6AE" />
+                    <stop offset="45%" stop-color="#7AA9FF" />
+                    <stop offset="75%" stop-color="#A27CFF" />
+                    <stop offset="100%" stop-color="#EF74B8" />
+                  </linearGradient>
+                </defs>
+                <path d="M3 3H18L25 24L18 45H3L9.8 24L3 3Z" fill="url(#titleGradient)" />
+              </svg>
+
+              <div>
+                <p class="topline">
+                  <span class="msr" aria-hidden="true">warning</span>
+                  <span>404 / Not Found</span>
+                </p>
+
+                <h1 id="page-title">
+                  <span class="grad">404</span><br />
+                  このページはまだ公開されていないか、見つかりません。
+                </h1>
+              </div>
+            </div>
+
+            <p class="lead">
+              URL が変更されたか、記事が移動・削除された可能性があります。
+              また、<strong>未公開の記事</strong>・<strong>下書き状態の記事</strong>・公開前のリンクを開いたため、
+              現在は表示できない場合もあります。
+            </p>
+          </div>
+
+          <div class="hero-side">
+            <div class="route-box" aria-labelledby="path-title">
+              <div class="route-meta">
+                <p id="path-title" class="route-label">
+                  <span class="msr" aria-hidden="true">route</span>
+                  <span>アクセスしようとした URL</span>
+                </p>
+                <code class="route-path" id="requestedPath">/</code>
+              </div>
+            </div>
+
+            <div class="route-visual" aria-hidden="true">
+              <svg class="route-svg" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="routeGradient" x1="36" y1="34" x2="480" y2="120" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#5D86FF" />
+                    <stop offset="52%" stop-color="#8668FF" />
+                    <stop offset="100%" stop-color="#EF74B8" />
+                  </linearGradient>
+                </defs>
+
+                <path
+                  class="route-base"
+                  d="M36 42H160C176 42 188 54 188 70V86C188 102 200 114 216 114H330C348 114 362 100 362 82V68C362 50 376 36 394 36H480"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  class="route-active"
+                  d="M36 42H160C176 42 188 54 188 70V86C188 102 200 114 216 114H330C348 114 362 100 362 82V68C362 50 376 36 394 36H480"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <rect x="474" y="30" width="12" height="12" rx="3" fill="#EF74B8" class="route-dot" />
+                <path d="M452 84L486 118" stroke="rgba(31,31,31,0.12)" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M486 84L452 118" stroke="rgba(31,31,31,0.12)" stroke-width="2.5" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          {homeUrl}
+            <span class="msr" aria-hidden="true">home</span>
+            <span>トップページに戻る</span>
+          </a>
+
+          <button class="btn btn-secondary" type="button" id="backButton">
+            <span class="msr" aria-hidden="true">arrow_back</span>
+            <span>ひとつ前のページへ戻る</span>
+          </button>
+        </div>
+
+        <div class="content-grid">
+          <section class="search-panel" aria-labelledby="search-title">
+            <div class="section-head">
+              <h2 id="search-title" class="section-title">
+                <span class="msr" aria-hidden="true">search</span>
+                <span>サイト内検索</span>
+              </h2>
+              <p class="section-text">
+                ページが見つからない場合は、キーワードから探すのが早いことがあります。
+                本番ではこの欄を Pagefind に接続できます。
+              </p>
+            </div>
+
+            <form class="search-form" id="searchForm" role="search">
+              <label class="search-shell" for="searchInput">
+                <span class="msr" aria-hidden="true">search</span>
+                <input
+                  id="searchInput"
+                  class="search-input"
+                  type="search"
+                  name="q"
+                  placeholder="サイト内を検索..."
+                  aria-label="サイト内を検索"
+                />
+                <button class="search-button" type="submit">検索</button>
+              </label>
+            </form>
+
+            <p id="searchStatus" class="search-status" aria-live="polite"></p>
+
+            <div class="result-list" id="resultList">
+              {homeUrl}
+                <div class="result-meta">
+                  <span class="msr" aria-hidden="true">article</span>
+                  <span>検索結果のプレビュー</span>
+                </div>
+                <p class="result-title" id="previewTitle">Pagefind 連携前の表示例</p>
+                <p class="result-excerpt" id="previewText">
+                  本番で Pagefind を読み込めた場合は、ここに検索結果が表示されます。
+                </p>
+              </a>
+            </div>
+          </section>
+
+          <nav class="links-panel" aria-labelledby="quick-links-title">
+            <div class="section-head">
+              <h2 id="quick-links-title" class="section-title">
+                <span class="msr" aria-hidden="true">arrow_outward</span>
+                <span>よく使うリンク</span>
+              </h2>
+              <p class="section-text">
+                迷ったときに戻りやすい導線だけを置いています。
+              </p>
+            </div>
+
+            <div class="chips">
+              {homeUrl}
+                <span class="msr" aria-hidden="true">home</span>
+                <span class="chip-text">
+                  <span class="chip-label">ホーム</span>
+                  <span class="chip-sub">{homeUrl}</span>
+                </span>
+              </a>
+
+              {archiveUrl}
+                <span class="msr" aria-hidden="true">inventory_2</span>
+                <span class="chip-text">
+                  <span class="chip-label">アーカイブ</span>
+                  <span class="chip-sub">{archiveUrl}</span>
+                </span>
+              </a>
+
+              {tagsUrl}
+                <span class="msr" aria-hidden="true">sell</span>
+                <span class="chip-text">
+                  <span class="chip-label">タグ一覧</span>
+                  <span class="chip-sub">{tagsUrl}</span>
+                </span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </section>
+
+      <p class="footnote">
+        装飾は増やしすぎず、余白・タイポグラフィ・境界線・最小限の動きだけで整えた 404 ページです。
+      </p>
+    </main>
+
+    <script define:vars={{ basePath, homeUrl }}>
+      (() => {
+        const requestedPath = document.getElementById("requestedPath");
+        const backButton = document.getElementById("backButton");
+        const searchForm = document.getElementById("searchForm");
+        const searchInput = document.getElementById("searchInput");
+        const searchStatus = document.getElementById("searchStatus");
+        const resultList = document.getElementById("resultList");
+        const previewCard = document.getElementById("previewCard");
+        const previewTitle = document.getElementById("previewTitle");
+        const previewText = document.getElementById("previewText");
+
+        requestedPath.textContent =
+          window.location.pathname + window.location.search + window.location.hash;
+
+        backButton?.addEventListener("click", () => {
+          if (window.history.length > 1) {
+            window.history.back();
+          } else {
+            window.location.href = homeUrl;
+          }
+        });
+
+        let pagefindPromise = null;
+
+        async function ensurePagefind() {
+          if (window.pagefind) return window.pagefind;
+          if (pagefindPromise) return pagefindPromise;
+
+          pagefindPromise = new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = `${basePath}pagefind/pagefind.js`;
+            script.async = true;
+            script.onload = () => {
+              if (window.pagefind) {
+                resolve(window.pagefind);
+              } else {
+                reject(new Error("Pagefind は読み込まれましたが利用できません。"));
+              }
+            };
+            script.onerror = () => reject(new Error("Pagefind の読み込みに失敗しました。"));
+            document.head.appendChild(script);
+          });
+
+          return pagefindPromise;
+        }
+
+        function clearResults() {
+          resultList.innerHTML = "";
+        }
+
+        function createResultCard(item) {
+          const link = document.createElement("a");
+          link.className = "result-card";
+          link.href = item.url || homeUrl;
+
+          const meta = document.createElement("div");
+          meta.className = "result-meta";
+          meta.innerHTML = `
+            <span class="msr" aria-hidden="true">article</span>
+            <span>検索結果</span>
+          `;
+
+          const title = document.createElement("p");
+          title.className = "result-title";
+          title.textContent = item.meta?.title || "タイトルなし";
+
+          const excerpt = document.createElement("p");
+          excerpt.className = "result-excerpt";
+          excerpt.innerHTML = item.excerpt || "該当ページの要約はありません。";
+
+          link.appendChild(meta);
+          link.appendChild(title);
+          link.appendChild(excerpt);
+          return link;
+        }
+
+        function showPreview(title, text, href = homeUrl) {
+          clearResults();
+          previewTitle.textContent = title;
+          previewText.textContent = text;
+          previewCard.href = href;
+          resultList.appendChild(previewCard);
+        }
+
+        searchForm?.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const keyword = searchInput.value.trim();
+
+          if (!keyword) {
+            searchStatus.textContent = "検索キーワードを入力してください。";
+            showPreview(
+              "検索キーワードが未入力です",
+              "記事タイトル、タグ、カテゴリなど、思い当たる言葉を入力してください。"
+            );
+            searchInput.focus();
+            return;
+          }
+
+          searchStatus.textContent = "検索中です…";
+          clearResults();
+
+          try {
+            const pagefind = await ensurePagefind();
+            const response = await pagefind.search(keyword);
+            const results = await Promise.all(
+              response.results.slice(0, 6).map((item) => item.data())
+            );
+
+            if (!results.length) {
+              searchStatus.textContent = `「${keyword}」に一致する結果は見つかりませんでした。`;
+              showPreview(
+                "検索結果が見つかりませんでした",
+                "未公開・下書き状態の記事であるか、まだ検索インデックスに含まれていない可能性があります。"
+              );
+              return;
+            }
+
+            searchStatus.textContent = `「${keyword}」の検索結果を ${results.length} 件表示しています。`;
+
+            results.forEach((item) => {
+              resultList.appendChild(createResultCard(item));
+            });
+          } catch (error) {
+            console.error(error);
+            searchStatus.textContent =
+              "検索機能を読み込めませんでした。開発中であれば、本番ビルド後の preview 環境で確認してください。";
+            showPreview(
+              "Pagefind を読み込めませんでした",
+              "ローカル開発中は検索が動かない場合があります。本番ビルド後の環境で確認してください。"
+            );
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
