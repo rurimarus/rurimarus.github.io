@@ -16,9 +16,10 @@ const tagsUrl = `${basePath}tags/`;
     />
     <meta name="robots" content="noindex" />
 
+    <!-- Google Fonts / Material Symbols -->
     https://fonts.googleapis.com
     https://fonts.gstatic.com
-    https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0&display=swap&icon_names=home,arrow_back,search,inventory_2,sell,route,arrow_outward,article,warning
+    https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0&display=swap
 
     <style>
       :root {
@@ -27,7 +28,7 @@ const tagsUrl = `${basePath}tags/`;
         --surface-soft: #fbfbfd;
         --text: #1f1f1f;
         --muted: #5f6368;
-        --line: rgba(31, 31, 31, 0.10);
+        --line: rgba(31, 31, 31, 0.1);
         --line-strong: rgba(31, 31, 31, 0.16);
 
         --accent-blue: #5d86ff;
@@ -42,7 +43,7 @@ const tagsUrl = `${basePath}tags/`;
         --shadow-hover: 0 12px 28px rgba(16, 24, 40, 0.08);
 
         --content-width: 1040px;
-        --transition: 220ms cubic-bezier(.2, .8, .2, 1);
+        --transition: 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
       }
 
       * {
@@ -155,7 +156,12 @@ const tagsUrl = `${basePath}tags/`;
       }
 
       .grad {
-        background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet), var(--accent-pink));
+        background: linear-gradient(
+          135deg,
+          var(--accent-blue),
+          var(--accent-violet),
+          var(--accent-pink)
+        );
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -288,7 +294,12 @@ const tagsUrl = `${basePath}tags/`;
 
       .btn-primary {
         color: #ffffff;
-        background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet), var(--accent-pink));
+        background: linear-gradient(
+          135deg,
+          var(--accent-blue),
+          var(--accent-violet),
+          var(--accent-pink)
+        );
         box-shadow: var(--shadow-soft);
       }
 
@@ -379,7 +390,11 @@ const tagsUrl = `${basePath}tags/`;
         padding: 0 16px;
         border: 0;
         border-radius: var(--radius-pill);
-        background: linear-gradient(135deg, rgba(93, 134, 255, 0.10), rgba(239, 116, 184, 0.12));
+        background: linear-gradient(
+          135deg,
+          rgba(93, 134, 255, 0.1),
+          rgba(239, 116, 184, 0.12)
+        );
         color: var(--text);
         font-weight: 700;
         cursor: pointer;
@@ -451,7 +466,11 @@ const tagsUrl = `${basePath}tags/`;
       }
 
       .result-excerpt mark {
-        background: linear-gradient(135deg, rgba(93, 134, 255, 0.20), rgba(239, 116, 184, 0.24));
+        background: linear-gradient(
+          135deg,
+          rgba(93, 134, 255, 0.2),
+          rgba(239, 116, 184, 0.24)
+        );
         color: inherit;
         padding: 0 0.16em;
         border-radius: 0.35em;
@@ -509,13 +528,24 @@ const tagsUrl = `${basePath}tags/`;
       }
 
       @keyframes flow {
-        from { stroke-dashoffset: 0; }
-        to { stroke-dashoffset: -160; }
+        from {
+          stroke-dashoffset: 0;
+        }
+        to {
+          stroke-dashoffset: -160;
+        }
       }
 
       @keyframes blink {
-        0%, 100% { opacity: .7; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.06); }
+        0%,
+        100% {
+          opacity: 0.7;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.06);
+        }
       }
 
       @media (min-width: 920px) {
@@ -613,14 +643,24 @@ const tagsUrl = `${basePath}tags/`;
             <div class="title-row">
               <svg class="title-mark" viewBox="0 0 28 48" fill="none" aria-hidden="true">
                 <defs>
-                  <linearGradient id="titleGradient" x1="3" y1="3" x2="24" y2="44" gradientUnits="userSpaceOnUse">
+                  <linearGradient
+                    id="titleGradient"
+                    x1="3"
+                    y1="3"
+                    x2="24"
+                    y2="44"
+                    gradientUnits="userSpaceOnUse"
+                  >
                     <stop offset="0%" stop-color="#67D6AE" />
                     <stop offset="45%" stop-color="#7AA9FF" />
                     <stop offset="75%" stop-color="#A27CFF" />
                     <stop offset="100%" stop-color="#EF74B8" />
                   </linearGradient>
                 </defs>
-                <path d="M3 3H18L25 24L18 45H3L9.8 24L3 3Z" fill="url(#titleGradient)" />
+                <path
+                  d="M3 3H18L25 24L18 45H3L9.8 24L3 3Z"
+                  fill="url(#titleGradient)"
+                />
               </svg>
 
               <div>
@@ -655,9 +695,21 @@ const tagsUrl = `${basePath}tags/`;
             </div>
 
             <div class="route-visual" aria-hidden="true">
-              <svg class="route-svg" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                class="route-svg"
+                viewBox="0 0 520 160"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <defs>
-                  <linearGradient id="routeGradient" x1="36" y1="34" x2="480" y2="120" gradientUnits="userSpaceOnUse">
+                  <linearGradient
+                    id="routeGradient"
+                    x1="36"
+                    y1="34"
+                    x2="480"
+                    y2="120"
+                    gradientUnits="userSpaceOnUse"
+                  >
                     <stop offset="0%" stop-color="#5D86FF" />
                     <stop offset="52%" stop-color="#8668FF" />
                     <stop offset="100%" stop-color="#EF74B8" />
@@ -678,9 +730,19 @@ const tagsUrl = `${basePath}tags/`;
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 />
-                <rect x="474" y="30" width="12" height="12" rx="3" fill="#EF74B8" class="route-dot" />
-                <path d="M452 84L486 118" stroke="rgba(31,31,31,0.12)" stroke-width="2.5" stroke-linecap="round" />
-                <path d="M486 84L452 118" stroke="rgba(31,31,31,0.12)" stroke-width="2.5" stroke-linecap="round" />
+                <rect class="route-dot" x="474" y="30" width="12" height="12" rx="3" fill="#EF74B8" />
+                <path
+                  d="M452 84L486 118"
+                  stroke="rgba(31,31,31,0.12)"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M486 84L452 118"
+                  stroke="rgba(31,31,31,0.12)"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
               </svg>
             </div>
           </div>
@@ -799,8 +861,10 @@ const tagsUrl = `${basePath}tags/`;
         const previewTitle = document.getElementById("previewTitle");
         const previewText = document.getElementById("previewText");
 
-        requestedPath.textContent =
-          window.location.pathname + window.location.search + window.location.hash;
+        if (requestedPath) {
+          requestedPath.textContent =
+            window.location.pathname + window.location.search + window.location.hash;
+        }
 
         backButton?.addEventListener("click", () => {
           if (window.history.length > 1) {
@@ -813,13 +877,19 @@ const tagsUrl = `${basePath}tags/`;
         let pagefindPromise = null;
 
         async function ensurePagefind() {
-          if (window.pagefind) return window.pagefind;
-          if (pagefindPromise) return pagefindPromise;
+          if (window.pagefind) {
+            return window.pagefind;
+          }
+
+          if (pagefindPromise) {
+            return pagefindPromise;
+          }
 
           pagefindPromise = new Promise((resolve, reject) => {
             const script = document.createElement("script");
             script.src = `${basePath}pagefind/pagefind.js`;
             script.async = true;
+
             script.onload = () => {
               if (window.pagefind) {
                 resolve(window.pagefind);
@@ -827,7 +897,11 @@ const tagsUrl = `${basePath}tags/`;
                 reject(new Error("Pagefind は読み込まれましたが利用できません。"));
               }
             };
-            script.onerror = () => reject(new Error("Pagefind の読み込みに失敗しました。"));
+
+            script.onerror = () => {
+              reject(new Error("Pagefind の読み込みに失敗しました。"));
+            };
+
             document.head.appendChild(script);
           });
 
@@ -835,7 +909,9 @@ const tagsUrl = `${basePath}tags/`;
         }
 
         function clearResults() {
-          resultList.innerHTML = "";
+          if (resultList) {
+            resultList.innerHTML = "";
+          }
         }
 
         function createResultCard(item) {
@@ -861,10 +937,15 @@ const tagsUrl = `${basePath}tags/`;
           link.appendChild(meta);
           link.appendChild(title);
           link.appendChild(excerpt);
+
           return link;
         }
 
         function showPreview(title, text, href = homeUrl) {
+          if (!previewCard || !previewTitle || !previewText || !resultList) {
+            return;
+          }
+
           clearResults();
           previewTitle.textContent = title;
           previewText.textContent = text;
@@ -875,19 +956,26 @@ const tagsUrl = `${basePath}tags/`;
         searchForm?.addEventListener("submit", async (event) => {
           event.preventDefault();
 
-          const keyword = searchInput.value.trim();
+          const keyword = searchInput?.value.trim() || "";
 
           if (!keyword) {
-            searchStatus.textContent = "検索キーワードを入力してください。";
+            if (searchStatus) {
+              searchStatus.textContent = "検索キーワードを入力してください。";
+            }
+
             showPreview(
               "検索キーワードが未入力です",
               "記事タイトル、タグ、カテゴリなど、思い当たる言葉を入力してください。"
             );
-            searchInput.focus();
+
+            searchInput?.focus();
             return;
           }
 
-          searchStatus.textContent = "検索中です…";
+          if (searchStatus) {
+            searchStatus.textContent = "検索中です…";
+          }
+
           clearResults();
 
           try {
@@ -898,23 +986,33 @@ const tagsUrl = `${basePath}tags/`;
             );
 
             if (!results.length) {
-              searchStatus.textContent = `「${keyword}」に一致する結果は見つかりませんでした。`;
+              if (searchStatus) {
+                searchStatus.textContent = `「${keyword}」に一致する結果は見つかりませんでした。`;
+              }
+
               showPreview(
                 "検索結果が見つかりませんでした",
                 "未公開・下書き状態の記事であるか、まだ検索インデックスに含まれていない可能性があります。"
               );
+
               return;
             }
 
-            searchStatus.textContent = `「${keyword}」の検索結果を ${results.length} 件表示しています。`;
+            if (searchStatus) {
+              searchStatus.textContent = `「${keyword}」の検索結果を ${results.length} 件表示しています。`;
+            }
 
             results.forEach((item) => {
-              resultList.appendChild(createResultCard(item));
+              resultList?.appendChild(createResultCard(item));
             });
           } catch (error) {
             console.error(error);
-            searchStatus.textContent =
-              "検索機能を読み込めませんでした。開発中であれば、本番ビルド後の preview 環境で確認してください。";
+
+            if (searchStatus) {
+              searchStatus.textContent =
+                "検索機能を読み込めませんでした。開発中であれば、本番ビルド後の preview 環境で確認してください。";
+            }
+
             showPreview(
               "Pagefind を読み込めませんでした",
               "ローカル開発中は検索が動かない場合があります。本番ビルド後の環境で確認してください。"
