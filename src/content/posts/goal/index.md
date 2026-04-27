@@ -1,53 +1,48 @@
 ---
-title: 玉川大学コスモス祭 3Dマップ 仕様書 v0.2
+title: 玉川大学コスモス祭 3Dマップ 仕様書 v0.3
 published: 2026-04-22
-description: 松ヶ崎祭の3Dマップをベンチマークにした、玉川大学コスモス祭向け Web 3Dマップの仕様書・構築方針・実装方針のドラフト。
+description: 玉川大学コスモス祭向け Web 3Dマップの仕様書・構築方針・実装方針。Fuwari貼り付け用。
 tags: [Tamagawa, Cosmos Festival, MapLibre, PLATEAU, Scaniverse, 3D Map, Fuwari]
 category: Project Spec
 draft: false
 ---
 
 > [!IMPORTANT]
-> この文書は **「コスモス祭までに公開できる現実的な範囲」を定める仕様書ドラフト**です。  
-> 完成版ではなく、設計・実装・判断の土台として使います。
-> copilotによって、マークダウン形式で書かれました。
+> この文書は **「コスモス祭までに公開できる現実的な範囲」を定める仕様書兼・構築設計書** です。  
+> 目的は、構想を実装可能な形に落とし、迷いなく開発を進められる状態にすることです。
 
-# 玉川大学コスモス祭 3Dマップ 仕様書 v0.2
+# 玉川大学コスモス祭 3Dマップ 仕様書 v0.3
 
-## 1. プロジェクト概要
+---
+
+## 1. このプロジェクトで作るもの
 
 玉川大学コスモス祭の来場者向けに、  
 **現在地付きの Web 3D マップ**を提供する。
 
-このマップの目的は、単なる見た目の良い 3D 表示ではなく、
+このプロジェクトの目的は、単に「3D で見えてすごい」ではない。  
+以下ができることを重視する。
 
-- 自分が **今どこにいるか** 分かる
+- 今、自分が **どこにいるか** 分かる
 - 模擬店・トイレ・受付・ステージなどを **すぐ探せる**
 - 初めて来た人でも **迷いにくい**
-- 学園祭の案内として **スマホで使いやすい**
-
-ことにある。
+- スマホで **ストレスなく使える**
 
 ---
 
 ## 2. ベンチマーク
 
-本プロジェクトは、京都工芸繊維大学「松ヶ崎祭」のような、  
-**大学祭来場者向けの Web 3D マップ体験**をベンチマークとする。
-
-ただし、完全再現を目的とせず、玉川大学向けに以下を重視する。
+本プロジェクトは、大学祭向けの実用的な 3D マップ体験をベンチマークにする。  
+ただし、完全再現を目標にはせず、玉川大学コスモス祭向けに次を重視する。
 
 - スマホでの使いやすさ
 - 現在地表示
 - 模擬店・トイレ・受付・ステージの探しやすさ
 - 大学祭当日に「本当に使える」こと
-  
 
-:::note[ベンチマークの位置づけ]
 > [!NOTE]
->松ヶ崎祭のような「大学祭で実際に公開され、来場者が触る 3D マップ」を目標にしつつ、  
->玉川大学コスモス祭では **機能を絞って完成度を上げる** 方針を取る。
-:::
+> 目標は「全部入りの Google マップ風アプリ」ではなく、  
+> **“大学祭来場者向けに必要十分な案内アプリ”** を作ることです。
 
 ---
 
@@ -63,7 +58,7 @@ draft: false
 
 ## 4. 解決したい課題
 
-### 4.1 想定される課題
+### 4.1 想定課題
 
 - 初来場者にはキャンパスの地理が分かりにくい
 - 平面マップだけでは位置関係を把握しづらい
@@ -94,10 +89,9 @@ draft: false
 - **運営スタッフ**
   - 来場者案内の補助として使いたい
 
-:::tip [優先順位]
-MVP では、**外部来場者向けの分かりやすさ**を最優先する。  
-在学生にとって便利な機能は歓迎だが、初見ユーザーが迷わないことを優先する。
-:::
+> [!TIP]
+> MVP では、**外部来場者向けの分かりやすさ**を最優先する。  
+> 在学生向けの利便性は歓迎だが、初見ユーザーが迷わないことを優先する。
 
 ---
 
@@ -178,7 +172,6 @@ MVP では、**外部来場者向けの分かりやすさ**を最優先する。
 
 ## 9. 初期版ではやらないこと
 
-### 9.1 明確にスコープ外とする機能
 - 本格的な経路探索
 - ターンバイターン案内
 - 屋内ナビゲーション
@@ -189,15 +182,14 @@ MVP では、**外部来場者向けの分かりやすさ**を最優先する。
 - 通知機能
 - 多言語対応（必要なら後日）
 
-:::warning [重要]
-**経路探索は初期版ではやらない。**  
-ここを欲張ると、ルートデータ整備・ノード管理・再探索処理まで必要になり、  
-プロジェクト全体の難易度が一段上がる。
-:::
+> [!WARNING]
+> **経路探索は初期版ではやらない。**  
+> ルートデータ整備・ノード管理・再探索処理まで必要になり、  
+> 開発難易度とデータ整備コストが一段上がる。
 
 ---
 
-## 10. 将来拡張（中長期）
+## 10. 将来拡張
 
 ### 10.1 室内対応の方向性
 将来的には、以下を拡張候補とする。
@@ -207,15 +199,14 @@ MVP では、**外部来場者向けの分かりやすさ**を最優先する。
 - 特定入口から先の案内情報
 - 室内 3D モデルの重ね合わせ
 
-### 10.2 今年やらない理由
+### 10.2 初期版でやらない理由
 - 室内モデル作成コストが高い
 - 室内現在地推定は別難易度
 - 学園祭までの期間を考えると、まずは屋外案内を完成させる方が価値が高い
 
-:::note [室内の扱い]
-室内は「今年の必須機能」ではなく、**将来拡張として仕様に位置付ける**。  
-ただし、**入口・受付・特徴的な会場の 3D 化**は、必要に応じて部分的に取り入れる。
-:::
+> [!NOTE]
+> 室内は「今年の必須機能」ではなく、**将来拡張として仕様に位置付ける**。  
+> ただし、**入口・受付・特徴的な会場の 3D 化**は、必要に応じて部分的に取り入れる。
 
 ---
 
@@ -261,7 +252,9 @@ MVP では、**外部来場者向けの分かりやすさ**を最優先する。
 
 ### 12.1 フロントエンド
 - Vite
+- React
 - TypeScript
+- CSS Modules（または素の CSS / SCSS）
 
 ### 12.2 地図エンジン
 - MapLibre GL JS
@@ -279,68 +272,421 @@ MVP では、**外部来場者向けの分かりやすさ**を最優先する。
 ### 12.6 公開
 - Cloudflare Pages
 
+> [!TIP]
+> CSS は **Tailwind 前提にしない**。  
+> 今回は、UI を追い込みやすく、HTML / JSX 構造を見失いにくい  
+> **CSS Modules か SCSS** を基本方針とする。
+
 ---
 
-## 13. 構築手段・方法・方針
+## 13. 全体アーキテクチャ
 
-### 13.1 全体方針
-本プロジェクトは、以下の役割分担で構築する。
+### 13.1 構成イメージ
+
+```txt title="architecture-overview.txt"
+[ブラウザ]
+   ├─ React UI
+   ├─ MapLibre GL JS
+   ├─ Three.js custom layer
+   ├─ Geolocation API
+   ├─ GeoJSON / JSON 読み込み
+   └─ 必要に応じて Scaniverse 由来 GLB 読み込み
+
+[静的ファイル]
+   ├─ public/data/pois.geojson
+   ├─ public/data/categories.json
+   ├─ public/data/events.json
+   ├─ public/models/*.glb
+   └─ public/images/*
+
+[背景3D]
+   └─ PLATEAU 町田市 3D Tiles / 必要範囲のみ利用
+
+[デプロイ]
+   └─ Cloudflare Pages
+```
+
+### 13.2 役割分担
 
 - **MapLibre**：Web 地図の土台
 - **PLATEAU**：町田市 / 玉川大学周辺の背景 3D
 - **GeoJSON / JSON**：模擬店・トイレ・受付・イベントなどの本体データ
 - **Geolocation API**：現在地表示
-- **Scaniverse（必要に応じて）**：玉川大学固有の目印や局所的な会場の 3D 化
+- **Scaniverse（必要に応じて）**：玉川大学固有の目印や局所空間の 3D 化
 
-### 13.2 なぜ MapLibre を使うか
-- Web 公開向き
-- 静的ホスティングと相性がよい
-- 3D モデル / 3D Tiles と組み合わせ可能
-- 将来の拡張性がある
+---
 
-### 13.3 なぜ PLATEAU を使うか
-- 町田市の 3D 背景を最初から使える
+## 14. なぜこの構成にするのか
+
+### 14.1 MapLibre を使う理由
+- Web で扱いやすい
+- 静的サイトと相性が良い
+- 3D モデルや 3D Tiles と組み合わせ可能
+- Mapbox に比べて公開時のコスト設計を単純化しやすい
+
+### 14.2 PLATEAU を使う理由
+- 町田市の背景 3D を最初から使える
 - 建築物や道路の 3D データがある
 - 背景をゼロから作らなくてよい
-- 公開データとして使いやすい
+- 学祭に必要な見た目の土台を早く作れる
 
-### 13.4 なぜ学祭データは自作するか
+### 14.3 学祭データを自作する理由
 - 本当に重要なのは「何がどこにあるか」
-- 模擬店、トイレ、受付、ステージ、休憩所などは PLATEAU には入っていない
+- 模擬店、トイレ、受付、ステージ、休憩所などは学祭固有データ
 - 学祭当日の情報は自前で管理する必要がある
 
----
-
-## 14. 実装方針
-
-### 14.1 実装の優先順位
-1. 地図を表示する
-2. 現在地を表示する
-3. 施設データを載せる
-4. 施設詳細 UI を作る
-5. 背景 3D の見た目を整える
-6. 必要なら Scaniverse 由来の固有モデルを足す
-
-### 14.2 先にやること
-- 画面の完成度より、まず「使える体験」を優先する
-- 最初に 3D の豪華さを追いすぎない
-- 施設情報が見つかることを優先する
-
-### 14.3 後で足すこと
-- 見た目の強化
-- 一覧 UI の強化
-- 特徴物 3D の追加
-- 部分的な室内表示
+### 14.4 Scaniverse を補助的に使う理由
+- 校門、入口、看板、特徴物を 3D 化できる
+- 玉川大学らしさを足せる
+- 背景全体ではなく「目印」を強くできる
 
 ---
 
-## 15. Scaniverse 活用方針
+## 15. 構築手段・方法・方針（かなり詳しく）
 
-### 15.1 Scaniverse の役割
-Scaniverse は、**室内ナビを完成させるためのツールではなく、3D 資産を作るためのツール**として使う。
+## 15.1 開発環境を作る
 
-### 15.2 何をスキャンするか
-優先順位は以下とする。
+### 15.1.1 プロジェクト作成
+まずは Vite + React + TypeScript で静的サイトとして始める。
+
+```bash title="create-project.sh"
+npm create vite@latest tamagawa-cosmos-map -- --template react-ts
+cd tamagawa-cosmos-map
+npm install
+```
+
+### 15.1.2 必要ライブラリ導入
+最低限、以下を入れる。
+
+```bash title="install-deps.sh"
+npm install maplibre-gl three
+npm install 3d-tiles-renderer
+npm install @turf/distance @turf/helpers
+```
+
+必要なら以下も候補にする。
+
+```bash title="optional-deps.sh"
+npm install zod
+npm install clsx
+npm install sass
+```
+
+### 15.1.3 開発用サーバ起動
+
+```bash title="run-dev.sh"
+npm run dev
+```
+
+> [!NOTE]
+> 最初の段階では、**地図が出ること**だけを目標にする。  
+> まだ 3D も POI も入れなくてよい。
+
+---
+
+## 15.2 ディレクトリを先に切る
+
+```txt title="project-structure.txt"
+src/
+  main.tsx
+  App.tsx
+
+  app/
+    map/
+      MapView.tsx
+      map.style.css
+      layers/
+        plateauLayer.ts
+        modelLayer.ts
+      controls/
+        CurrentLocationButton.tsx
+        FilterPanel.tsx
+    ui/
+      BottomSheet.tsx
+      SearchPanel.tsx
+      FacilityList.tsx
+    data/
+      loadPois.ts
+      loadCategories.ts
+      loadEvents.ts
+      schemas.ts
+    features/
+      nearby.ts
+      geolocation.ts
+      filtering.ts
+    state/
+      useMapState.ts
+
+  styles/
+    globals.css
+
+public/
+  data/
+    pois.geojson
+    categories.json
+    events.json
+  models/
+  images/
+```
+
+### 15.2.1 役割
+- `app/map/`：地図と 3D 関連
+- `app/ui/`：下部シートや一覧 UI
+- `app/data/`：データ読み込み
+- `app/features/`：距離計算、位置取得などのロジック
+- `public/data/`：実データ
+- `public/models/`：GLB など
+
+> [!TIP]
+> 最初にフォルダを切っておくと、  
+> 後で「地図ロジック」と「UI ロジック」と「データ処理」が混ざりにくい。
+
+---
+
+## 15.3 まずは地図だけ表示する
+
+### 15.3.1 最初の到達目標
+- 画面いっぱいに地図が表示される
+- 中心が玉川大学周辺
+- スマホでも表示される
+
+```tsx title="src/app/map/MapView.tsx"
+import { useEffect, useRef } from 'react'
+import maplibregl from 'maplibre-gl'
+import 'maplibre-gl/dist/maplibre-gl.css'
+
+export default function MapView() {
+  const mapRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (!mapRef.current) return
+
+    const map = new maplibregl.Map({
+      container: mapRef.current,
+      style: 'https://tiles.openfreemap.org/styles/bright',
+      center: [139.48, 35.57],
+      zoom: 16,
+      pitch: 45,
+      bearing: 0,
+      hash: true
+    })
+
+    map.addControl(new maplibregl.NavigationControl(), 'top-right')
+
+    return () => map.remove()
+  }, [])
+
+  return <div style={{ width: '100%', height: '100dvh' }} ref={mapRef} />
+}
+```
+
+> [!IMPORTANT]
+> タイル提供元は **開発用** と **本番用** を分けて考える。  
+> 最初は動作確認を優先し、本番前に利用条件・配信方式・キャッシュ方針を確認する。
+
+---
+
+## 15.4 現在地表示を入れる
+
+### 15.4.1 方針
+- `navigator.geolocation.watchPosition` を使う
+- 現在地マーカーを更新する
+- 現在地ボタンで追従できるようにする
+
+### 15.4.2 ロジックの分離
+`app/features/geolocation.ts` にまとめる。
+
+```ts title="src/app/features/geolocation.ts"
+export type UserLocation = {
+  lng: number
+  lat: number
+  accuracy?: number
+}
+
+export function watchUserLocation(
+  onUpdate: (loc: UserLocation) => void,
+  onError?: (error: GeolocationPositionError) => void
+) {
+  if (!navigator.geolocation) return null
+
+  const id = navigator.geolocation.watchPosition(
+    (pos) => {
+      onUpdate({
+        lng: pos.coords.longitude,
+        lat: pos.coords.latitude,
+        accuracy: pos.coords.accuracy
+      })
+    },
+    (err) => onError?.(err),
+    {
+      enableHighAccuracy: true,
+      maximumAge: 5000,
+      timeout: 10000
+    }
+  )
+
+  return id
+}
+
+export function clearUserLocationWatch(id: number | null) {
+  if (id !== null && navigator.geolocation) {
+    navigator.geolocation.clearWatch(id)
+  }
+}
+```
+
+### 15.4.3 UI の考え方
+- 初回は「現在地を使う」ボタンを出す
+- 許可後、青い点を出す
+- 精度が悪いときは「やや不正確」表示も検討する
+
+> [!NOTE]
+> 室内では GPS 精度が落ちる前提で設計する。  
+> 初期版では **屋外の現在地表示が主用途** である。
+
+---
+
+## 15.5 学祭データを先に作る
+
+### 15.5.1 先にコードを書かない
+まず POI データ構造を確定する。
+
+```json title="public/data/pois.geojson"
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.4800, 35.5700]
+      },
+      "properties": {
+        "id": "info-main",
+        "name": "総合受付",
+        "category": "info",
+        "description": "来場者向けの総合受付です",
+        "hours": "10:00-16:00",
+        "image": "/images/info-main.jpg",
+        "tags": ["reception", "guide"]
+      }
+    }
+  ]
+}
+```
+
+### 15.5.2 カテゴリも分離する
+
+```json title="public/data/categories.json"
+[
+  { "id": "food", "label": "食べ物", "color": "#f97316" },
+  { "id": "stage", "label": "ステージ", "color": "#8b5cf6" },
+  { "id": "toilet", "label": "トイレ", "color": "#3b82f6" },
+  { "id": "info", "label": "受付", "color": "#10b981" },
+  { "id": "rest", "label": "休憩所", "color": "#06b6d4" }
+]
+```
+
+### 15.5.3 データを先に整える理由
+- UI を作る前に、必要項目が確定する
+- 後から DB を入れなくてもよい
+- 静的ホスティングと相性が良い
+
+> [!TIP]
+> 学園祭アプリでは、  
+> **「どの技術を使うか」より「データをどう持つか」** の方が後々効く。
+
+---
+
+## 15.6 POI を地図に出す
+
+### 15.6.1 実装方法
+- GeoJSON を fetch する
+- `map.addSource` で追加
+- `circle` / `symbol` レイヤで表示
+- タップ時に下部シートを開く
+
+### 15.6.2 まずはシンプルに始める
+- 1レイヤ 1カテゴリでもいい
+- 先に動かしてから色分けする
+
+---
+
+## 15.7 近くの施設機能を作る
+
+### 15.7.1 初期版の考え方
+ルート案内ではなく、**現在地から近い施設を出す** だけでもかなり便利。
+
+### 15.7.2 実装方法
+- ユーザー位置と POI の距離を計算
+- 上位 3〜5 件を出す
+- タップで地図移動
+
+```ts title="src/app/features/nearby.ts"
+import distance from '@turf/distance'
+import { point } from '@turf/helpers'
+
+export function calcDistanceMeters(
+  from: [number, number],
+  to: [number, number]
+) {
+  return distance(point(from), point(to), { units: 'kilometers' }) * 1000
+}
+```
+
+> [!NOTE]
+> 初期版で必要なのは **最短経路** ではなく、  
+> **「近くに何があるか」** を返すこと。
+
+---
+
+## 15.8 背景 3D を入れる
+
+### 15.8.1 背景 3D の役割
+- 玉川大学周辺の立体感を出す
+- 広いキャンパスの位置関係を把握しやすくする
+- “大学祭アプリっぽさ”を強める
+
+### 15.8.2 方法
+背景 3D は **PLATEAU 町田市データ** をベース候補とする。  
+まずは「玉川大学周辺だけ表示」することを前提に考える。
+
+### 15.8.3 実装のやり方
+選択肢は 2 つ。
+
+#### 方法 A：3D Tiles を背景として読む
+- PLATEAU の 3D Tiles を読み込む
+- Three.js custom layer として MapLibre 上に重ねる
+- 背景として使う
+
+#### 方法 B：必要な部分だけ軽量化して使う
+- 玉川大学周辺だけ切り出す
+- 必要なら GLB 化や別形式化して軽くする
+- 重点エリアだけ表示する
+
+> [!IMPORTANT]
+> 初期版では **「町田市全域」ではなく「玉川大学周辺だけ」** を対象にする。  
+> データが重いとスマホ体験が悪化する。
+
+### 15.8.4 custom layer 用の責務
+`plateauLayer.ts` にまとめる。
+
+```ts title="src/app/map/layers/plateauLayer.ts"
+export function createPlateauLayer() {
+  // Three.js + 3D Tiles 読み込み処理
+  // localTransform / MercatorCoordinate / camera sync をここに閉じ込める
+}
+```
+
+---
+
+## 15.9 Scaniverse の使い方（補助的な 3D 資産作成）
+
+### 15.9.1 Scaniverse の位置づけ
+Scaniverse は、**室内ナビ完成ツールではなく、3D 資産作成ツール** として使う。
+
+### 15.9.2 何をスキャンするか
+優先順位は以下。
 
 1. 校門・建物入口・案内看板
 2. 学祭のゲートや特徴的な目印
@@ -348,21 +694,68 @@ Scaniverse は、**室内ナビを完成させるためのツールではなく�
 4. 特定会場の入口周辺
 5. 必要なら特定室内空間の簡易 3D 化
 
-### 15.3 何を期待しないか
+### 15.9.3 どう使うか
+1. Scaniverse でスキャンする  
+2. GLB などで書き出す  
+3. `public/models/` に配置する  
+4. MapLibre + Three.js 上で現実座標に配置する
+
+### 15.9.4 期待しないこと
 - 室内現在地の推定
 - 室内経路探索
-- 全建物の室内完全再現
+- 全建物室内対応
 
-### 15.4 運用方針
-- まずは「目印になるもの」から始める
-- 重要会場だけ部分的に精密化する
-- PLATEAU の背景 3D を置き換えるのではなく、補強する
+> [!WARNING]
+> Scaniverse は **「場所を 3D 化する」ことには強い** が、  
+> それだけで **「ナビゲーション」や「測位」まで完成するわけではない**。
 
 ---
 
-## 16. データ設計
+## 16. 詳しい実装順序
 
-### 16.1 施設データ
+## Step 1：地図だけ出す
+- MapLibre を表示
+- 玉川大学周辺に中心を合わせる
+- スマホで動作確認
+
+## Step 2：現在地を出す
+- Geolocation API を接続
+- 青い点を表示
+- 現在地ボタンを追加
+
+## Step 3：POI を出す
+- GeoJSON を読み込む
+- トイレ、受付、模擬店を表示
+- タップで詳細を出す
+
+## Step 4：カテゴリフィルター
+- food / stage / toilet / info などを切り替え
+- 一覧 UI も追加
+
+## Step 5：近くの施設
+- 距離を計算
+- 近い順で数件表示
+
+## Step 6：背景 3D
+- PLATEAU 背景を統合
+- パフォーマンス確認
+- 必要なら範囲縮小
+
+## Step 7：必要に応じて Scaniverse 追加
+- 校門や入口の目印を 3D 化
+- 玉川大学らしさを足す
+
+## Step 8：最終調整
+- モバイル UI
+- 説明文
+- イベント情報
+- 公開準備
+
+---
+
+## 17. データ設計
+
+### 17.1 施設データ
 施設情報は **GeoJSON** を基本とする。
 
 ```json title="public/data/pois.geojson"
@@ -389,19 +782,7 @@ Scaniverse は、**室内ナビを完成させるためのツールではなく�
 }
 ```
 
-#### 施設データ項目
-- `id`
-- `name`
-- `category`
-- `description`
-- `hours`
-- `image`
-- `tags`
-- `coordinates`
-
-### 16.2 カテゴリデータ
-カテゴリ定義は JSON で管理する。
-
+### 17.2 カテゴリデータ
 ```json title="public/data/categories.json"
 [
   { "id": "food", "label": "食べ物", "color": "#f97316" },
@@ -411,8 +792,7 @@ Scaniverse は、**室内ナビを完成させるためのツールではなく�
 ]
 ```
 
-### 16.3 イベントデータ（必要に応じて）
-
+### 17.3 イベントデータ
 ```json title="public/data/events.json"
 [
   {
@@ -428,79 +808,98 @@ Scaniverse は、**室内ナビを完成させるためのツールではなく�
 
 ---
 
-## 17. ディレクトリ構成（案）
+## 18. UI 設計方針
 
-```txt title="project-structure.txt"
-src/
-  main.ts
-  app/
-    map/
-    ui/
-    data/
-    state/
-    features/
-  assets/
-public/
-  data/
-    pois.geojson
-    categories.json
-    events.json
-  images/
-  models/
+### 18.1 画面の基本原則
+- 1画面で完結できることを優先
+- 2〜3 タップ以内で欲しい情報に到達
+- 情報を詰め込みすぎない
+
+### 18.2 下部シートを主役にする
+施設詳細は別ページ遷移より、  
+**下部シート** の方がモバイル体験に向く。
+
+### 18.3 一覧画面は補助
+地図が苦手な人向けに一覧は用意するが、  
+主導線はあくまで地図画面に置く。
+
+---
+
+## 19. Cloudflare Pages での公開方法
+
+### 19.1 GitHub 連携前提
+- GitHub に push
+- Cloudflare Pages でリポジトリ接続
+- Vite の build 結果 `dist` を配信
+
+### 19.2 代表設定
+```txt title="cloudflare-pages-build.txt"
+Framework preset: Vite
+Build command: npm run build
+Build output directory: dist
 ```
 
----
+### 19.3 注意点
+- `public/` 配下の静的ファイルがそのまま配信される
+- 大きすぎるモデルは避ける
+- 相対パスの確認を行う
 
-## 18. 非機能要件
-
-### 18.1 デバイス
-- スマートフォン最優先
-- PC / タブレットは副次対応
-
-### 18.2 パフォーマンス
-- 学園祭会場の通信環境でも実用になること
-- 初回表示をなるべく軽くすること
-- 重いデータは必要範囲に絞ること
-
-### 18.3 操作性
-- 初見でも迷わない UI
-- 一覧画面からでも施設を探せる
-- なるべく 2〜3 タップ以内で目的施設にたどり着けること
+> [!TIP]
+> 最初は **静的サイトとして成立する形** を優先する。  
+> サーバサイド処理や DB は入れない。
 
 ---
 
-## 19. 開発フェーズ
+## 20. テスト方針
 
-### Phase 1：基盤
-- 地図表示
-- 現在地表示
-- スマホ UI の最小実装
+### 20.1 最低限確認すること
+- iPhone / Android で開けるか
+- 現在地が取れるか
+- POI が表示されるか
+- タップで詳細が出るか
+- フィルターが効くか
+- 近くの施設が出るか
+- 地図が重すぎないか
 
-### Phase 2：背景3D
-- キャンパス周辺 3D 表示
-- カメラ調整
-- パフォーマンス調整
+### 20.2 実地確認
+可能なら玉川大学キャンパスで確認する。
 
-### Phase 3：施設情報
-- POI データ投入
-- ポップアップ
-- カテゴリフィルター
-- 一覧画面
-
-### Phase 4：固有要素
-- 必要に応じて Scaniverse で作成した固有モデル追加
-- 目印の強化
-- 玉川大学らしさの補強
-
-### Phase 5：仕上げ
-- UI 改善
-- 実機確認
-- 説明文や画像追加
-- 学園祭向け最終調整
+- 受付位置が正しいか
+- ステージ位置が正しいか
+- GPS が現場で使い物になるか
+- 入口周辺の案内にズレがないか
 
 ---
 
-## 20. リリース判定基準
+## 21. リスクと対策
+
+### リスク1：3Dデータが重い
+**対策**
+- 玉川大学周辺だけに絞る
+- 背景 3D は必要範囲のみ
+- Scaniverse モデルは後から追加
+
+### リスク2：現在地精度が安定しない
+**対策**
+- 屋外中心で使う
+- 「だいたいの位置」で使う前提
+- 入口案内・施設検索中心にする
+
+### リスク3：機能を盛りすぎる
+**対策**
+- 経路探索は入れない
+- 室内ナビは入れない
+- MVP 以外は後回し
+
+### リスク4：開発が長引く
+**対策**
+- 先に地図＋現在地＋POI を完成させる
+- 背景 3D は後からでもよい
+- Scaniverse は余力追加にする
+
+---
+
+## 22. リリース判定基準
 
 以下を満たしたら初期版を公開可能と判断する。
 
@@ -513,35 +912,7 @@ public/
 
 ---
 
-## 21. リスクと対策
-
-### リスク1：3Dデータが重い
-**対策**
-- 表示範囲を玉川大学周辺に絞る
-- 背景 3D は最初から完璧を目指さない
-- 必要なら一部だけ簡略化する
-
-### リスク2：現在地精度が安定しない
-**対策**
-- 「だいたいの位置」で使う前提にする
-- 現在地ボタンを目立たせる
-- 施設探しの補助として使う
-
-### リスク3：機能を盛りすぎる
-**対策**
-- 経路探索を初期版に入れない
-- 室内ナビを初期版に入れない
-- MVP 以外は後回しにする
-
-### リスク4：固有モデル追加で時間が溶ける
-**対策**
-- Scaniverse は後半フェーズで使う
-- 最初は 0 個でも公開可能とする
-- 入口や目印など、効果が高いものから追加する
-
----
-
-## 22. 未決事項
+## 23. 未決事項
 
 - 掲載対象施設の最終一覧
 - 施設詳細の文章と画像の準備方法
@@ -551,7 +922,7 @@ public/
 
 ---
 
-## 23. 優先順位
+## 24. 優先順位
 
 ### 最優先
 - 地図
@@ -571,24 +942,34 @@ public/
 
 ---
 
-## 24. 一言で表すなら
+## 25. 一言で表すなら
 
 **「玉川大学コスモス祭の来場者向け、現在地付き 3D 案内マップ」**
 
 ---
 
-## 25. 参考メモ（Fuwari 用）
+## 26. Fuwari 用メモ
 
-### 25.1 GitHub リポジトリカード
-必要なら、Fuwari の GitHub カードでプロジェクトリポジトリを貼れる。
+### 26.1 GitHub Syntax の注意
+以下のように書く。
 
+```md title="github-admonition-example.md"
+> [!NOTE]
+> これは GitHub Syntax の NOTE です。
+
+> [!TIP]
+> これは TIP です。
+
+> [!WARNING]
+> これは WARNING です。
+```
+
+### 26.2 GitHub リポジトリカード
 ```md title="github-card.md"
 ::github {repo="yourname/your-repo"}
 ```
 
-### 25.2 動画埋め込みメモ
-デモ動画や検証動画を貼る場合は iframe を使う。
-
+### 26.3 動画埋め込み
 ```html title="embed-video.html"
 <iframe
   width="100%"
@@ -600,24 +981,16 @@ public/
 </iframe>
 ```
 
-### 25.3 実装メモ欄
+### 26.4 実装メモ欄
 - [ ] 地図の初期表示
 - [ ] 現在地表示
 - [ ] POI データ作成
 - [ ] 施設詳細 UI
 - [ ] カテゴリフィルター
+- [ ] 近くの施設
+- [ ] 背景 3D
 - [ ] スマホでの動作確認
 - [ ] Cloudflare Pages 公開
 - [ ] 必要なら Scaniverse モデル追加
-
----
-
-## 26. 参考リンク
-
-- 松ヶ崎祭 3D マップ
-- MapLibre GL JS
-- PLATEAU 町田市 2025
-- Scaniverse
-- Cloudflare Pages
 
 ---
