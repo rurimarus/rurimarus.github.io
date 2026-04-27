@@ -2,7 +2,7 @@
 title: 玉川大学コスモス祭 3Dマップ 仕様書 v0.3
 published: 2026-04-22
 description: 玉川大学コスモス祭向け Web 3Dマップの仕様書・構築方針・実装方針。Fuwari貼り付け用。
-tags: [Tamagawa, Cosmos Festival, MapLibre, PLATEAU, Scaniverse, 3D Map, Fuwari]
+tags: [Cosmos Festival, MapLibre, PLATEAU, Scaniverse, 3D Map, Fuwari]
 category: Project Spec
 draft: false
 ---
