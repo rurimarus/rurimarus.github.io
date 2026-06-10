@@ -16,8 +16,8 @@
 		"preinstall": "npx only-allow pnpm"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.7",
-		"@astrojs/rss": "^4.0.17",
+		"@astrojs/check": "^0.9.9",
+		"@astrojs/rss": "^4.0.18",
 		"@astrojs/sitemap": "^3.6.0",
 		"@astrojs/svelte": "7.2.5",
 		"@astrojs/tailwind": "^6.0.2",
@@ -29,10 +29,10 @@
 		"@iconify-json/fa6-brands": "^1.2.6",
 		"@iconify-json/fa6-regular": "^1.2.4",
 		"@iconify-json/fa6-solid": "^1.2.4",
-		"@iconify-json/material-symbols": "^1.2.61",
+		"@iconify-json/material-symbols": "^1.2.76",
 		"@iconify/svelte": "^4.2.0",
 		"@swup/astro": "^1.7.0",
-		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/typography": "^0.5.20",
 		"astro": "5.16.6",
 		"astro-expressive-code": "^0.41.7",
 		"astro-icon": "^1.1.5",
@@ -62,7 +62,7 @@
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
-		"@astrojs/ts-plugin": "^1.10.7",
+		"@astrojs/ts-plugin": "^1.10.9",
 		"@biomejs/biome": "2.3.9",
 		"@rollup/plugin-yaml": "^4.1.2",
 		"@types/hast": "^3.0.4",
